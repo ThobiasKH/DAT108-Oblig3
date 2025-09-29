@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="no">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="Author" content="Ditt navn">
+        <link rel="shortcut icon" href="#">
+
+        <script defer src="deltager.js"></script>
+        <title>Administrasjon av deltagere</title>
+        <link href="lab2.css" rel="stylesheet" type="text/css">
+    </head>
+
+    <body>
+        <h1>Administrasjon av deltagere</h1>
+
+        <div id="root">
+            <fieldset class="registrering">
+                <legend>Registrer deltager</legend>
+                <div class="input">
+
+                    <label for="startnummer">Startnummer:</label>
+                    <input type="number" autocomplete="off" autofocus min="1" placeholder="Startnummer"
+                        id="startnummer">
+                    <label for="deltagernavn">Deltager:</label>
+                    <input type="text" placeholder="Navn på deltager" autocomplete="off" size="40" id="deltagernavn"
+                        pattern="\s*\p{L}{2,}((\s+|-)\p{L}{2,})*\s*"
+                        title="Tillate tegn er kun bokstaver, mellomrom og enkel bindestrek mellom delnavn">
+                    <label for="sluttid">Sluttid:</label>
+                    <input type="time" step="1" id="sluttid" title="Fyll inn både timer, minutte og sekunder"
+                        min="00:00:01">
+
+                    <button type="button">Registrer deltager</button>
+                </div>
+                <p class="hidden">Deltager <span></span> med startnummer <span></span> ble registrert med sluttid
+                    <span></span>.</p>
+            </fieldset>
+
+            <fieldset class="resultat">
+                <legend>Resultater</legend>
+                <div class="input">
+                    <label for="nedregrense">Fra: </label><input type="time" id="nedregrense" step="1"
+                        title="Fyll inn nedre grense">
+                    <label for="ovregrense">Til: </label><input type="time" id="ovregrense" step="1"
+                        title="Fyll inn øvre grense">
+
+                    <button type="button">Vis deltagere</button>
+                </div>
+                <div class="liste">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Plassering</th>
+                                <th>Startnummer</th>
+                                <th>Navn</th>
+                                <th>Sluttid</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <p>Ingen resultater</p>
+                </div>
+            </fieldset>
+        </div>
+    </body>
+
+</html>

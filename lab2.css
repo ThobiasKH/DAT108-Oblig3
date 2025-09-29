@@ -1,0 +1,74 @@
+.hidden {
+    display: none !important;
+}
+
+.grid {
+    display: grid;
+}
+
+input:invalid {
+    border: 2px solid red;
+}
+
+input {
+    border: 2px solid lime;
+}
+
+fieldset {
+    margin: 20px 0;
+    padding: 10px;
+}
+
+.registrering>.input {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    grid-gap: 5px;
+}
+
+.registrering>.input>button {
+    grid-column: 1/span 2;
+}
+
+/*
+.resultat {
+    margin-top: 5em;
+}
+*/
+
+.resultat>div {
+    float: right;
+}
+
+.resultat>div+div {
+    float: left;
+}
+
+.resultat>.input {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    grid-gap: 5px 15px;
+}
+
+.resultat>.input>button {
+    grid-column: 1/span 2;
+}
+
+table {
+    border-collapse: collapse;
+    empty-cells: show;
+}
+
+th {
+    padding-top: 5px;
+}
+
+td,
+th {
+    padding-left: 1em;
+    text-align: left;
+}
+
+td:first-child,
+th:first-child {
+    padding-left: 0px;
+}
