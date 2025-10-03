@@ -15,10 +15,14 @@ class DeltagerManager {
 
         this.resultatContainer = document.getElementsByClassName("liste")[0];
         
-        root.children[0].children[1].children[6]
+        this.root.querySelector(".registrering")
+            .querySelector("button")
             .addEventListener("click", () => this.registrerDeltager());
 
-        root.children[1].children[1].children[4]
+        //root.children[1].children[1].children[4]  Veldig kul og fin alternativ løsning. Mye lettere å lese, sier vi.
+            //.addEventListener("click", () => this.visResultater());
+        this.root.querySelector(".resultat")
+            .querySelector("button")
             .addEventListener("click", () => this.visResultater());
 
     }
@@ -173,7 +177,7 @@ class DeltagerManager {
 
         const plassMap = this.#beregnPlassering();
 
-        const table = this.resultatContainer.children[0];
+        const table = this.resultatContainer.querySelector("table");
         table.innerHTML = `
             <tr>
               <th>Plassering</th><th>Startnummer</th><th>Navn</th><th>Sluttid</th>
