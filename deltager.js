@@ -1,10 +1,8 @@
 class DeltagerManager {
-    // Deklarer felt-variabler her
     #deltagere = [];
     #storageKey = "deltagere";
 
     constructor(root) {
-        // Legg inn kode her
         this.root = root; 
         this.#deltagere = this.#loadFromStorage();
 
@@ -16,7 +14,6 @@ class DeltagerManager {
         this.tilInput = document.getElementById("ovregrense");
 
         this.resultatContainer = document.getElementsByClassName("liste")[0];
-
         
         root.children[0].children[1].children[6]
             .addEventListener("click", () => this.registrerDeltager());
@@ -56,7 +53,6 @@ class DeltagerManager {
                 return parts[0] * 3600 + parts[1] * 60 + parts[2];
             }
         }
-        // fallback: sekunder (kan vere float)
         return parseFloat(str.replace(",", "."));
     }
 
@@ -87,12 +83,18 @@ class DeltagerManager {
         let navn = this.navnInput?.value || "";
         let sluttidStr = this.sluttidInput?.value || "";
 
-
-        if (!startnr || !navn || !sluttidStr) {
-            //console.log(true);
+        if (!startnr) {
+            this.startnrInput.setCustomValidity("Startnummer må være numerisk verdi!");
+            this.startnrInput.reportValidity();
+            this.startnrInput.focus();
+            return;
+        }
+        if (!navn) {
+            this.navnInput.setCustomValidity("Du må skrive et navn!");
+            this.navnInput.reportValidity();
+            this.navnInput.focus();
             return; 
         }
-
 
         startnr = startnr.trim();
         navn = navn.trim();
@@ -114,7 +116,8 @@ class DeltagerManager {
             this.startnrInput.reportValidity();
             this.startnrInput.focus();
             return;
-        } else {
+        } 
+        else {
             this.startnrInput.setCustomValidity("");
         }
 
@@ -136,7 +139,6 @@ class DeltagerManager {
         this.#deltagere.push(deltager);
         this.#saveToStorage();
 
-        // Tøm felter og sett fokus
         this.startnrInput.value = "";
         this.navnInput.value = "";
         this.sluttidInput.value = "";
@@ -169,10 +171,8 @@ class DeltagerManager {
 
         list.sort((a, b) => a.tid - b.tid);
 
-        // beregn plasseringar totalt
         const plassMap = this.#beregnPlassering();
 
-        // bygg tabell
         const table = this.resultatContainer.children[0];
         table.innerHTML = `
             <tr>
